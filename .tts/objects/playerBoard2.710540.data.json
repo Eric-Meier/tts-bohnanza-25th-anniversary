@@ -1,0 +1,206 @@
+{
+  "GUID": "710540",
+  "Name": "CardCustom",
+  "Transform": {
+    "posX": -1.08602904e-10,
+    "posY": 0.9736048,
+    "posZ": -12.5,
+    "rotX": 2.77984142e-8,
+    "rotY": 179.999954,
+    "rotZ": 6.29301633e-9,
+    "scaleX": 1.6499995,
+    "scaleY": 1,
+    "scaleZ": 1.6499995
+  },
+  "Nickname": "playerBoard2",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.713235259,
+    "g": 0.713235259,
+    "b": 0.713235259
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": true,
+  "Hands": true,
+  "CardID": 200,
+  "SidewaysCard": false,
+  "CustomDeck": {
+    "2": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
+      "NumWidth": 1,
+      "NumHeight": 1,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 1
+    }
+  },
+  "LuaScript": "function onLoad()\r\n    -- Create button on the object this script is attached to\r\n    self.createButton({\r\n        click_function = \"Harvest2\",\r\n        function_owner = self,\r\n        position       = {0.1, 0.2, -2},\r\n        width          = 80,\r\n        height         = 300,\r\n        tooltip        = \"Harvest\",\r\n        color          = {0.83, 0.13, 0.17}\r\n    })\r\n    self.createButton({\r\n        click_function = \"Harvest1\",\r\n        function_owner = self,\r\n        position       = {-0.68, 0.2, -2},\r\n        width          = 80,\r\n        height         = 300,\r\n        tooltip        = \"Harvest\",\r\n        color          = {0.83, 0.13, 0.17}\r\n    })\r\nend\r\n\r\nfunction getFieldDeck(position)\r\n    local fieldDeck\r\n    local hitList = Physics.cast({\r\n        origin       = position,\r\n        type         = 2,\r\n        size         = {0.1,0.1,0.1},\r\n        debug        = false,\r\n        max_distance = 0,\r\n        direction    = {0,1,0}\r\n    })\r\n    for _, obj in ipairs(hitList) do\r\n        if obj.hit_object.tag == 'Deck' then\r\n            fieldDeck = obj.hit_object\r\n        end\r\n    end\r\n    return fieldDeck\r\nend\r\n\r\nfunction Harvest1()\r\n    local fieldPosition = self.positionToWorld(self.getSnapPoints()[2].position)\r\n    local fieldDeck = getFieldDeck(fieldPosition)\r\n    local fieldBeanName = fieldDeck.getObjects()[1].name\r\n    if fieldBeanName == 'garden' then\r\n        log('wowza')\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.09894514,
+        "y": 0.20931612,
+        "z": 0.5458503
+      },
+      "Rotation": {
+        "x": -1.90485636e-8,
+        "y": 0.0002595472,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": 0.660692155,
+        "y": 0.209359124,
+        "z": 0.550708234
+      },
+      "Rotation": {
+        "x": 7.728764e-9,
+        "y": 0.0002732076,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": -0.7024495,
+        "y": 0.20930396,
+        "z": -0.00134493678
+      },
+      "Rotation": {
+        "x": 8.569377e-9,
+        "y": 0.000273207581,
+        "z": 180
+      }
+    }
+  ],
+  "States": {
+    "2": {
+      "GUID": "8f0414",
+      "Name": "CardCustom",
+      "Transform": {
+        "posX": -1.08602904e-10,
+        "posY": 0.9736048,
+        "posZ": -12.5,
+        "rotX": 2.77984142e-8,
+        "rotY": 179.999954,
+        "rotZ": 6.29301633e-9,
+        "scaleX": 1.6499995,
+        "scaleY": 1,
+        "scaleZ": 1.6499995
+      },
+      "Nickname": "",
+      "Description": "",
+      "GMNotes": "",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": true,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 300,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "3": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
+          "NumWidth": 1,
+          "NumHeight": 1,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 1
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": "",
+      "AttachedSnapPoints": [
+        {
+          "Position": {
+            "x": 0.7471769,
+            "y": 0.209305868,
+            "z": 0.5732313
+          },
+          "Rotation": {
+            "x": -1.73753012e-8,
+            "y": 359.987366,
+            "z": -3.00710958e-8
+          }
+        },
+        {
+          "Position": {
+            "x": 0.277715951,
+            "y": 0.209305838,
+            "z": 0.5599681
+          },
+          "Rotation": {
+            "x": 7.11022949e-7,
+            "y": -0.00133871706,
+            "z": -0.000001036755
+          }
+        },
+        {
+          "Position": {
+            "x": -0.1903904,
+            "y": 0.209305808,
+            "z": 0.560403168
+          },
+          "Rotation": {
+            "x": -1.248795e-8,
+            "y": 0.000505434,
+            "z": 1.91456078e-8
+          }
+        },
+        {
+          "Position": {
+            "x": -0.726618767,
+            "y": 0.2093058,
+            "z": 0.0321534164
+          },
+          "Rotation": {
+            "x": 2.67468825e-10,
+            "y": 0.000505434,
+            "z": -2.53530974e-8
+          }
+        }
+      ]
+    }
+  }
+}

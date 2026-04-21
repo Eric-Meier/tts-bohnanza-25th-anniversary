@@ -1,0 +1,57 @@
+{
+  "GUID": "ffe65c",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -1.25,
+    "posY": 1.06,
+    "posZ": 7.5,
+    "rotX": 7.4055265e-7,
+    "rotY": 180,
+    "rotZ": -1.61553331e-7,
+    "scaleX": 0.5000005,
+    "scaleY": 1,
+    "scaleZ": 0.5000005
+  },
+  "Nickname": "showBeansButton",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/1756937567112412525/E0719A27A065529DFFE504B8654FFE66B4FDACBE/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "-- The snap point position (find via Snapping Tool, right-click, or script)\r\nlocal showBeanSpot1 = {x = 3.75, y = 2.5, z = 0}\r\nlocal showBeanSpot2 = {x = 3.75, y = 2.5, z = -3.75}\r\n\r\nfunction onLoad()\r\n    -- Create button on the object this script is attached to\r\n    self.createButton({\r\n        click_function = \"drawAndSnap\",\r\n        function_owner = self,\r\n        label          = \"Show\\nBeans\",\r\n        position       = {0, 0.1, 0},\r\n        width          = 2000,\r\n        height         = 2000,\r\n        font_size      = 600\r\n    })\r\nend\r\n\r\nfunction showBeans(deck)\r\n    deck.takeObject({position = showBeanSpot1, smooth = true, flip = true})\r\n    deck.takeObject({position = showBeanSpot2, smooth = true, flip = true})\r\nend\r\n\r\nfunction drawAndSnap()\r\n    local deck = Global.call('getDeck')\r\n    if deck == nil then\r\n        deck = Global.call('shuffleInDiscard')\r\n        Wait.time(function() \r\n            showBeans(deck)\r\n        end, 1)\r\n    elseif deck.tag == \"Deck\" then\r\n        showBeans(deck)\r\n    elseif deck.tag == \"Card\" then\r\n        deck = Global.call('shuffleInDiscard')\r\n        Wait.time(function() \r\n            showBeans(deck)\r\n        end, 1)\r\n    end\r\nend\r\n",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}
