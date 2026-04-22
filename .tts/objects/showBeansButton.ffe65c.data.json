@@ -2,12 +2,12 @@
   "GUID": "ffe65c",
   "Name": "Custom_Token",
   "Transform": {
-    "posX": -1.25,
+    "posX": 8.75,
     "posY": 1.06,
-    "posZ": 7.5,
-    "rotX": 7.4055265e-7,
+    "posZ": -1.25,
+    "rotX": 9.86821647e-8,
     "rotY": 180,
-    "rotZ": -1.61553331e-7,
+    "rotZ": 8.147906e-7,
     "scaleX": 0.5000005,
     "scaleY": 1,
     "scaleZ": 0.5000005
