@@ -1,5 +1,5 @@
 local numPlayers = #getSeatedPlayers()
--- local numPlayers = 4
+local gameOver = false
 
 function onLoad()
     -- Create button on the object this script is attached to
@@ -17,11 +17,19 @@ end
 function dealOneToAll()
     local deck = Global.call('getDeck')
     if deck == nil then
-        deck = Global.call('shuffleInDiscard')
-        Wait.time(function() deck.deal(1) end, 1)
+        deck, gameOver = Global.call('shuffleInDiscard')
+        Wait.time(function() 
+            if gameOver == false then
+                deck.deal(1) 
+            end
+        end, 1)
     elseif deck.getQuantity() < numPlayers then
-       deck = Global.call('shuffleInDiscard')
-       Wait.time(function() deck.deal(1) end, 1)
+        deck = Global.call('shuffleInDiscard')
+        Wait.time(function() 
+            if gameOver == false then
+                deck.deal(1) 
+            end
+        end, 1)
     else
         deck.deal(1)
     end
