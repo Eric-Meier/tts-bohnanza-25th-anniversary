@@ -1,8 +1,7 @@
 local numPlayers = #getSeatedPlayers()
--- local numPlayers = 5
+local gameOver = false
 
 function onLoad()
-    -- Create button on the object this script is attached to
     self.createButton({
         click_function = "deal3ToMe",
         function_owner = self,
@@ -15,13 +14,25 @@ function onLoad()
 end
 
 function deal3ToMe(_,color,_)
+    local deal1Button = getObjectFromGUID('975188')
+    if deal1Button then
+        deal1Button.destruct()
+    end
     local deck = Global.call('getDeck')
     if deck == nil then
-        deck = Global.call('shuffleInDiscard')
-        Wait.time(function() deck.deal(3,color) end, 1)
+        deck, gameOver = Global.call('shuffleInDiscard')
+        Wait.time(function() 
+            if gameOver == false then
+                deck.deal(3,color) 
+            end
+        end, 1)
     elseif deck.getQuantity() < numPlayers then
-       deck = Global.call('shuffleInDiscard')
-       Wait.time(function() deck.deal(3,color) end, 1)
+        deck, gameOver = Global.call('shuffleInDiscard')
+        Wait.time(function() 
+            if gameOver == false then 
+                deck.deal(3,color) 
+            end
+        end, 1)
     else
         deck.deal(3,color)
     end

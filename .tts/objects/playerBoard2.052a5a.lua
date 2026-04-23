@@ -33,6 +33,8 @@ end
 
 function getFieldDeck(position)
     local fieldDeck
+    local beanName
+    local beanCount
     local hitList = Physics.cast({
         origin       = position,
         type         = 2,
@@ -44,16 +46,26 @@ function getFieldDeck(position)
     for _, obj in ipairs(hitList) do
         if obj.hit_object.tag == 'Deck' then
             fieldDeck = obj.hit_object
+            beanName = fieldDeck.getObjects()[1].name
+            beanCount = fieldDeck.getQuantity()
+        end
+        if obj.hit_object.tag == 'Card' then
+            if obj.hit_object.getName() ~= 'playerBoard2' and obj.hit_object.getName() ~= 'playerBoard3' then
+                fieldDeck = obj.hit_object
+                beanName = fieldDeck.getName()
+                beanCount = 1
+            end
         end
     end
-    return fieldDeck
+    return fieldDeck, beanName, beanCount
 end
 
 function harvest(fieldIndex)
     local fieldPosition = self.positionToWorld(self.getSnapPoints()[fieldIndex].position)
-    local fieldDeck = getFieldDeck(fieldPosition)
-    local beanName = fieldDeck.getObjects()[1].name
-    local beanCount = fieldDeck.getQuantity()
+    local fieldDeck
+    local beanName
+    local beanCount
+    fieldDeck, beanName, beanCount = getFieldDeck(fieldPosition)
     local coins = 0
     local coinPosition = self.positionToWorld(self.getSnapPoints()[3].position)
     local coinDropPosition = {coinPosition[1],coinPosition[2]+2,coinPosition[3]}
@@ -98,34 +110,36 @@ function harvest(fieldIndex)
     elseif beanName == 'field' then
         value = fieldValue
     end
-    log(value)
     for _, doodoo in ipairs(value) do
         if beanCount >= doodoo[1] then
             coins = doodoo[2]
         end
     end
-    log(coins)
     if coins == 'field' then
         self.setState(2)
         coins = 0
     end
-    for i, card in ipairs(fieldDeck.getObjects()) do
-        if i <= coins then
-            if i < beanCount then
-                local poopoo = fieldDeck.takeObject()
-                poopoo.setPositionSmooth(coinDropPosition,false)
-                poopoo.setRotation({-180,0,0})
-            else
-                fieldDeck.remainder.setPositionSmooth(coinDropPosition,false)
-                fieldDeck.remainder.setRotation({-180,0,0})
-            end
-        elseif i > coins then
-            if i < beanCount then
-                local poopoo = fieldDeck.takeObject()
-                poopoo.setPositionSmooth(discardDropPosition,false)
-            else
-                fieldDeck.remainder.setPositionSmooth(discardDropPosition,false)
+    if fieldDeck.tag == 'Deck' then
+        for i, card in ipairs(fieldDeck.getObjects()) do
+            if i <= coins then
+                if i < beanCount then
+                    local poopoo = fieldDeck.takeObject()
+                    poopoo.setPositionSmooth(coinDropPosition,false)
+                    poopoo.setRotation({-180,0,0})
+                else
+                    fieldDeck.remainder.setPositionSmooth(coinDropPosition,false)
+                    fieldDeck.remainder.setRotation({-180,0,0})
+                end
+            elseif i > coins then
+                if i < beanCount then
+                    local poopoo = fieldDeck.takeObject()
+                    poopoo.setPositionSmooth(discardDropPosition,false)
+                else
+                    fieldDeck.remainder.setPositionSmooth(discardDropPosition,false)
+                end
             end
         end
+    elseif fieldDeck.tag == 'Card' then
+        fieldDeck.setPositionSmooth(discardDropPosition,false)
     end
 end

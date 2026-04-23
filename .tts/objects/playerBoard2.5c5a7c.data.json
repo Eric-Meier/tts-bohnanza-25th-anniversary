@@ -1,13 +1,13 @@
 {
-  "GUID": "052a5a",
+  "GUID": "5c5a7c",
   "Name": "CardCustom",
   "Transform": {
-    "posX": 15,
-    "posY": 0.973603964,
-    "posZ": -12.5,
-    "rotX": 2.77984142e-8,
-    "rotY": 179.999954,
-    "rotZ": 6.29301633e-9,
+    "posX": -21.25,
+    "posY": 0.973604739,
+    "posZ": 2.033521e-7,
+    "rotX": -4.256311e-7,
+    "rotY": 270,
+    "rotZ": 3.08442161e-8,
     "scaleX": 1.6499995,
     "scaleY": 1,
     "scaleZ": 1.6499995
