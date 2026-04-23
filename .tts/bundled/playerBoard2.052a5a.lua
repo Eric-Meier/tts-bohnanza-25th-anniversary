@@ -6,7 +6,7 @@ function onLoad()
     self.createButton({
         click_function = "Harvest2",
         function_owner = self,
-        position       = {-0.28, 0.2, -2},
+        position       = {0.1, 0.2, -2},
         width          = 80,
         height         = 300,
         tooltip        = "Harvest",
@@ -15,16 +15,7 @@ function onLoad()
     self.createButton({
         click_function = "Harvest1",
         function_owner = self,
-        position       = {-0.75, 0.2, -2},
-        width          = 80,
-        height         = 300,
-        tooltip        = "Harvest",
-        color          = {0.83, 0.13, 0.17}
-    })
-    self.createButton({
-        click_function = "Harvest3",
-        function_owner = self,
-        position       = {0.18, 0.2, -2},
+        position       = {-0.68, 0.2, -2},
         width          = 80,
         height         = 300,
         tooltip        = "Harvest",
@@ -33,15 +24,11 @@ function onLoad()
 end
 
 function Harvest1()
-    harvest(1)
-end
-
-function Harvest2()
     harvest(2)
 end
 
-function Harvest3()
-    harvest(3)
+function Harvest2()
+    harvest(1)
 end
 
 function getFieldDeck(position)
@@ -80,7 +67,7 @@ function harvest(fieldIndex)
     local beanCount
     fieldDeck, beanName, beanCount = getFieldDeck(fieldPosition)
     local coins = 0
-    local coinPosition = self.positionToWorld(self.getSnapPoints()[4].position)
+    local coinPosition = self.positionToWorld(self.getSnapPoints()[3].position)
     local coinDropPosition = {coinPosition[1],coinPosition[2]+2,coinPosition[3]}
     local discard = Global.call('getDiscard')
     local value
