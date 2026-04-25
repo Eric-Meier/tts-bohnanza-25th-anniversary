@@ -133,7 +133,11 @@ function harvest(fieldIndex)
         local fieldPositionOther = self.positionToWorld(self.getSnapPoints()[fieldIndexOther].position)
         local fieldDeckOther,_,_ = getFieldDeck(fieldPositionOther)
         local pb3 = self.setState(2)
-        fieldDeckOther.setPositionSmooth(pb3.positionToWorld(pb3.getSnapPoints()[1].position),false)
+        local pb3FieldPosition = pb3.positionToWorld(pb3.getSnapPoints()[1].position)
+        local fieldDeckOtherDropPosition = {pb3FieldPosition[1], pb3FieldPosition[2]+3, pb3FieldPosition[3]}
+        if fieldDeckOther then
+            Wait.time(function() fieldDeckOther.setPositionSmooth(fieldDeckOtherDropPosition,false) end, 0.5)
+        end
     end
     if fieldDeck.tag == 'Deck' then
         for i, card in ipairs(fieldDeck.getObjects()) do
