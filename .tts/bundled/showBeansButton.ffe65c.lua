@@ -2,6 +2,7 @@
 local showBeanSpot1 = {x = 3.75, y = 2.5, z = 0}
 local showBeanSpot2 = {x = 3.75, y = 2.5, z = -3.75}
 local gameOver = false
+local firstClick = true
 
 function onLoad()
     -- Create button on the object this script is attached to
@@ -17,6 +18,10 @@ function onLoad()
 end
 
 function drawAndSnap()
+    if firstClick then
+        firstClick = false
+        Global.call("deleteUnusedShit")
+    end
     local deck = Global.call('getDeck')
     if deck == nil then
         deck, gameOver = Global.call('shuffleInDiscard')
