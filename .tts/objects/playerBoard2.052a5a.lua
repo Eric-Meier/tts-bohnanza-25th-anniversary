@@ -66,6 +66,13 @@ function harvest(fieldIndex)
     local beanName
     local beanCount
     fieldDeck, beanName, beanCount = getFieldDeck(fieldPosition)
+    if beanName == 'garden' and beanCount >= 3 then
+        broadcastToAll('Uwe is pleased')
+        self.setCustomObject({
+            face = "https://steamusercontent-a.akamaihd.net/ugc/12325834521653936125/36AC6D60E9BD32FA806F332A4279FC981BAD586A/", 
+            back = "https://steamusercontent-a.akamaihd.net/ugc/12325834521653936125/36AC6D60E9BD32FA806F332A4279FC981BAD586A/"
+        })
+    end
     local coins = 0
     local coinPosition = self.positionToWorld(self.getSnapPoints()[3].position)
     local coinDropPosition = {coinPosition[1],coinPosition[2]+2,coinPosition[3]}
@@ -116,8 +123,17 @@ function harvest(fieldIndex)
         end
     end
     if coins == 'field' then
-        self.setState(2)
         coins = 0
+        local fieldIndexOther
+        if fieldIndex == 2 then
+            fieldIndexOther = 1
+        elseif fieldIndex == 1 then
+            fieldIndexOther = 2
+        end
+        local fieldPositionOther = self.positionToWorld(self.getSnapPoints()[fieldIndexOther].position)
+        local fieldDeckOther,_,_ = getFieldDeck(fieldPositionOther)
+        local pb3 = self.setState(2)
+        fieldDeckOther.setPositionSmooth(pb3.positionToWorld(pb3.getSnapPoints()[1].position),false)
     end
     if fieldDeck.tag == 'Deck' then
         for i, card in ipairs(fieldDeck.getObjects()) do
