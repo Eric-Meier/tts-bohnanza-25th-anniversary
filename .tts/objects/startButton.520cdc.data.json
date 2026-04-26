@@ -1,0 +1,57 @@
+{
+  "GUID": "520cdc",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 8.75,
+    "posY": 1.06,
+    "posZ": 6.25,
+    "rotX": 2.41296974e-8,
+    "rotY": 180,
+    "rotZ": -1.526932e-7,
+    "scaleX": 0.5000005,
+    "scaleY": 1,
+    "scaleZ": 0.5000005
+  },
+  "Nickname": "startButton",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/1756937567112412525/E0719A27A065529DFFE504B8654FFE66B4FDACBE/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "function onLoad()\r\n    -- Create button on the object this script is attached to\r\n    self.createButton({\r\n        click_function = \"startGame\",\r\n        function_owner = self,\r\n        label          = \"Shuffle\\nand Deal\",\r\n        position       = {0, 0.1, 0},\r\n        width          = 2500,\r\n        height         = 2000,\r\n        font_size      = 600\r\n    })\r\nend\r\n\r\nfunction startGame()\r\n    self.destruct()\r\n    Global.call(\"deleteUnusedShit\")\r\n    local deck = Global.call('getDeck')\r\n    deck.shuffle()\r\n    deck.deal(5)\r\nend\r\n",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

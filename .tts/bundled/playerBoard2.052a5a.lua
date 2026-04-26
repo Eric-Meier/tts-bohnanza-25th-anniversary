@@ -138,7 +138,7 @@ function harvest(fieldIndex)
                 local pb3FieldPosition = pb3.positionToWorld(pb3.getSnapPoints()[1].position)
                 local fieldDeckOtherDropPosition = {pb3FieldPosition[1], pb3FieldPosition[2]+1, pb3FieldPosition[3]}
                 fieldDeckOther.setPositionSmooth(fieldDeckOtherDropPosition,false) 
-            end, 0.1)
+            end, 1)
         end
     end
     if fieldDeck.tag == 'Deck' then
