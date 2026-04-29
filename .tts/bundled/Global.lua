@@ -5,7 +5,6 @@ local discardPosition = {-5,0,0}
 local deckPosition = {3.75,1,3.75}
 local shuffleCount = 0
 local numPlayers = #getSeatedPlayers()
-local numPlayers = 4
 local gameOver = false
 
 --[[ The onLoad event is called after the game save finishes loading. --]]
@@ -20,12 +19,12 @@ end
 
 function deleteUnusedShit()
     local pinkPlayerBoard = getObjectFromGUID("052a5a")
-    local purplePlayerBoard = getObjectFromGUID("46f189")
-    local redPlayerBoard = getObjectFromGUID("15fc21")
-    local orangePlayerBoard = getObjectFromGUID("acfb71")
-    local greenPlayerBoard = getObjectFromGUID("28deff")
-    local yellowPlayerBoard = getObjectFromGUID("71a203")
-    local bluePlayerBoard = getObjectFromGUID("923c07")
+    local purplePlayerBoard = getObjectFromGUID("0e3c7a")
+    local redPlayerBoard = getObjectFromGUID("e60665")
+    local orangePlayerBoard = getObjectFromGUID("7e6232")
+    local greenPlayerBoard = getObjectFromGUID("06c96b")
+    local yellowPlayerBoard = getObjectFromGUID("ae28a0")
+    local bluePlayerBoard = getObjectFromGUID("f51ff0")
     local playerBoardList = {bluePlayerBoard, greenPlayerBoard, orangePlayerBoard, pinkPlayerBoard, purplePlayerBoard, redPlayerBoard,yellowPlayerBoard}
     local colors = getSeatedPlayers()
     colorQList = {true, true, true, true, true, true, true}
@@ -112,24 +111,17 @@ function shuffleInDiscard()
     end
     shuffleCount = shuffleCount + 1
     getObjectFromGUID('fbdf57').setValue(shuffleCount+1)
-    if numPlayers == 3 then
-        if shuffleCount == 2 then
-            broadcastToAll('GAME OVER')
-            gameOver = true
-        else
-            discard.setPosition(deckPosition)
-            discard.setRotation({0,-90,0})
-            discard.flip()
-        end
-    elseif numPlayers >= 4 then
-        if shuffleCount == 3 then
-            broadcastToAll('GAME OVER')
-            gameOver = true
-        else
-            discard.setPosition(deckPosition)
-            discard.setRotation({0,-90,0})
-            discard.flip()
-        end
+    if numPlayers == 3 and shuffleCount == 2 then
+        broadcastToAll('GAME OVER')
+        gameOver = true
+    elseif numPlayers >= 4 and shuffleCount == 3 then
+        broadcastToAll('GAME OVER')
+        gameOver = true
+    end
+    if gameOver == false then
+        discard.setPosition(deckPosition)
+        discard.setRotation({0,-90,0})
+        discard.flip()
     end
     return discard, gameOver
 end

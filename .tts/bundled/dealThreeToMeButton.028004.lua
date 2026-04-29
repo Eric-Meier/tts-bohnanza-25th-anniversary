@@ -23,16 +23,19 @@ function deal3ToMe(_,color,_)
         deck, gameOver = Global.call('shuffleInDiscard')
         Wait.time(function() 
             if gameOver == false then
-                deck.deal(3,color) 
+                deck.deal(3,color)
             end
         end, 1)
-    elseif deck.getQuantity() < numPlayers then
+    elseif deck.getQuantity() < 3 then
         deck, gameOver = Global.call('shuffleInDiscard')
         Wait.time(function() 
-            if gameOver == false then 
-                deck.deal(3,color) 
+            if gameOver == false then
+                deck.deal(3,color)
             end
         end, 1)
+    elseif deck.getQuantity() == 3 then
+        deck.deal(3,color)
+        Global.call('shuffleInDiscard')
     else
         deck.deal(3,color)
     end

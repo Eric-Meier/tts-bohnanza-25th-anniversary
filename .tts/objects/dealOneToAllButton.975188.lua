@@ -34,6 +34,9 @@ function dealOneToAll()
                 deck.deal(1) 
             end
         end, 1)
+    elseif deck.getQuantity() == numPlayers then
+        deck.deal(1)
+        Global.call('shuffleInDiscard')
     else
         deck.deal(1)
     end
