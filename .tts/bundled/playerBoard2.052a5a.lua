@@ -72,6 +72,12 @@ function harvest(fieldIndex)
             face = "https://steamusercontent-a.akamaihd.net/ugc/12325834521653936125/36AC6D60E9BD32FA806F332A4279FC981BAD586A/", 
             back = "https://steamusercontent-a.akamaihd.net/ugc/12325834521653936125/36AC6D60E9BD32FA806F332A4279FC981BAD586A/"
         })
+    elseif beanName == 'blue' and beanCount >= 10 then
+        broadcastToAll('I;m thinking about thos Beans')
+        self.setCustomObject({
+            face = 'https://steamusercontent-a.akamaihd.net/ugc/14236327910096653218/DB19CA44E6A2391B2AA6794C7B0A2D6FB0DC7583/',
+            back = 'https://steamusercontent-a.akamaihd.net/ugc/14236327910096653218/DB19CA44E6A2391B2AA6794C7B0A2D6FB0DC7583/'
+        })
     end
     local coins = 0
     local coinPosition = self.positionToWorld(self.getSnapPoints()[3].position)
