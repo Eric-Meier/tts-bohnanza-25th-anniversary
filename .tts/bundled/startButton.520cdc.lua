@@ -13,13 +13,13 @@ end
 
 function startGame()
     self.destruct()
-    local pinkPlayerBoard = getObjectFromGUID("052a5a")
-    local purplePlayerBoard = getObjectFromGUID("c2eac5")
-    local redPlayerBoard = getObjectFromGUID("8b239c")
-    local orangePlayerBoard = getObjectFromGUID("843cc6")
+    local pinkPlayerBoard = getObjectFromGUID("fecb97")
+    local purplePlayerBoard = getObjectFromGUID("037352")
+    local redPlayerBoard = getObjectFromGUID("661824")
+    local orangePlayerBoard = getObjectFromGUID("64d6cb")
     local greenPlayerBoard = getObjectFromGUID("1b7746")
-    local yellowPlayerBoard = getObjectFromGUID("130d4e")
-    local bluePlayerBoard = getObjectFromGUID("7a86f8")
+    local yellowPlayerBoard = getObjectFromGUID("ab6f32")
+    local bluePlayerBoard = getObjectFromGUID("0c64a7")
     local playerBoardList = {bluePlayerBoard, greenPlayerBoard, orangePlayerBoard, pinkPlayerBoard, purplePlayerBoard, redPlayerBoard,yellowPlayerBoard}
     local colors = getSeatedPlayers()
     colorQList = {true, true, true, true, true, true, true}

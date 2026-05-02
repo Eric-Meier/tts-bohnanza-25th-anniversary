@@ -152,7 +152,7 @@ function harvest(fieldIndex)
                     local poopoo = fieldDeck.takeObject()
                     poopoo.setPositionSmooth(coinDropPosition,false)
                     poopoo.setRotation({-180,0,0})
-                else
+                elseif i == beanCount then
                     fieldDeck.remainder.setPositionSmooth(coinDropPosition,false)
                     fieldDeck.remainder.setRotation({-180,0,0})
                 end
@@ -160,7 +160,7 @@ function harvest(fieldIndex)
                 if i < beanCount then
                     local poopoo = fieldDeck.takeObject()
                     poopoo.setPositionSmooth(discardDropPosition,false)
-                else
+                elseif i == beanCount then
                     fieldDeck.remainder.setPositionSmooth(discardDropPosition,false)
                 end
             end
