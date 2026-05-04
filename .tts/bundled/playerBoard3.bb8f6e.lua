@@ -166,6 +166,11 @@ function harvest(fieldIndex)
             end
         end
     elseif fieldDeck.tag == 'Card' then
-        fieldDeck.setPositionSmooth(discardDropPosition,false)
+        if discard then
+            fieldDeck.setPosition({fieldPosition[1],fieldPosition[2]+3, fieldPosition[3]})
+            discard.putObject(fieldDeck)
+        else
+            fieldDeck.setPositionSmooth(discardDropPosition,false)
+        end   
     end
 end

@@ -39,4 +39,5 @@ function deal3ToMe(_,color,_)
     else
         deck.deal(3,color)
     end
+    Turns.endTurn()
 end

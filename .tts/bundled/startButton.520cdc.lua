@@ -14,12 +14,12 @@ end
 function startGame()
     self.destruct()
     local pinkPlayerBoard = getObjectFromGUID("fecb97")
-    local purplePlayerBoard = getObjectFromGUID("037352")
-    local redPlayerBoard = getObjectFromGUID("661824")
-    local orangePlayerBoard = getObjectFromGUID("64d6cb")
-    local greenPlayerBoard = getObjectFromGUID("1b7746")
-    local yellowPlayerBoard = getObjectFromGUID("ab6f32")
-    local bluePlayerBoard = getObjectFromGUID("0c64a7")
+    local purplePlayerBoard = getObjectFromGUID("ce0130")
+    local redPlayerBoard = getObjectFromGUID("8a723c")
+    local orangePlayerBoard = getObjectFromGUID("325035")
+    local greenPlayerBoard = getObjectFromGUID("3b8925")
+    local yellowPlayerBoard = getObjectFromGUID("c994e2")
+    local bluePlayerBoard = getObjectFromGUID("140239")
     local playerBoardList = {bluePlayerBoard, greenPlayerBoard, orangePlayerBoard, pinkPlayerBoard, purplePlayerBoard, redPlayerBoard,yellowPlayerBoard}
     local colors = getSeatedPlayers()
     colorQList = {true, true, true, true, true, true, true}
@@ -43,7 +43,7 @@ function startGame()
     for i, colorQ in ipairs(colorQList) do
         if colorQ then
             playerBoardList[i].destruct()
-        elseif #colors == 3 then
+        elseif #colors == 3 and not colorQ then
             playerBoardList[i].setState(2)
         end
     end

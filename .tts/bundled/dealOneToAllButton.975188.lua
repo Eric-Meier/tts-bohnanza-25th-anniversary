@@ -14,7 +14,7 @@ function onLoad()
     })
 end
 
-function dealOneToAll()
+function dealOneToAll(_, color, _)
     local deal3Button = getObjectFromGUID('028004')
     if deal3Button then
         deal3Button.destruct()
@@ -40,4 +40,5 @@ function dealOneToAll()
     else
         deck.deal(1)
     end
+    Turns.endTurn()
 end
