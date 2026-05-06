@@ -12,7 +12,8 @@ function onLoad()
         position       = {0, 0.1, 0},
         width          = 2000,
         height         = 2000,
-        font_size      = 600
+        font_size      = 600,
+        color          = {0.027,1,0}
     })
 end
 

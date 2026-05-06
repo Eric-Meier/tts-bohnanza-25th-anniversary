@@ -1,13 +1,13 @@
 {
-  "GUID": "fecb97",
+  "GUID": "3b8925",
   "Name": "CardCustom",
   "Transform": {
-    "posX": 15,
+    "posX": -15,
     "posY": 0.9736048,
-    "posZ": -12.5,
-    "rotX": -1.96914289e-8,
-    "rotY": 180,
-    "rotZ": -8.750555e-8,
+    "posZ": 12.5,
+    "rotX": 2.73931677e-9,
+    "rotY": 2.46374084e-11,
+    "rotZ": -5.694906e-8,
     "scaleX": 1.6499995,
     "scaleY": 1,
     "scaleZ": 1.6499995
@@ -95,15 +95,15 @@
   ],
   "States": {
     "2": {
-      "GUID": "bb8f6e",
+      "GUID": "e1a88a",
       "Name": "CardCustom",
       "Transform": {
-        "posX": 15,
+        "posX": -15,
         "posY": 0.9736048,
-        "posZ": -12.5,
-        "rotX": -1.96914289e-8,
-        "rotY": 180,
-        "rotZ": -8.750555e-8,
+        "posZ": 12.5,
+        "rotX": 2.73931677e-9,
+        "rotY": 2.46374084e-11,
+        "rotZ": -5.694906e-8,
         "scaleX": 1.6499995,
         "scaleY": 1,
         "scaleZ": 1.6499995

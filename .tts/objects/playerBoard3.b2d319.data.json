@@ -1,18 +1,18 @@
 {
-  "GUID": "fecb97",
+  "GUID": "b2d319",
   "Name": "CardCustom",
   "Transform": {
-    "posX": 15,
+    "posX": 1.47792889e-12,
     "posY": 0.9736048,
-    "posZ": -12.5,
-    "rotX": -1.96914289e-8,
-    "rotY": 180,
-    "rotZ": -8.750555e-8,
+    "posZ": 12.5,
+    "rotX": 5.27772457e-8,
+    "rotY": 3.93196829e-11,
+    "rotZ": 1.43961181e-8,
     "scaleX": 1.6499995,
     "scaleY": 1,
     "scaleZ": 1.6499995
   },
-  "Nickname": "playerBoard2",
+  "Nickname": "playerBoard3",
   "Description": "",
   "GMNotes": "",
   "AltLookAngle": {
@@ -39,76 +39,88 @@
   "GridProjection": false,
   "HideWhenFaceDown": true,
   "Hands": true,
-  "CardID": 200,
+  "CardID": 700,
   "SidewaysCard": false,
   "CustomDeck": {
-    "2": {
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
+    "7": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
       "NumWidth": 1,
       "NumHeight": 1,
       "BackIsHidden": true,
       "UniqueBack": false,
-      "Type": 1
+      "Type": 0
     }
   },
-  "LuaScript": "require(\"lib.playerBoard2\")",
+  "LuaScript": "require(\"lib.playerBoard3\")",
   "LuaScriptState": "",
   "XmlUI": "",
   "AttachedSnapPoints": [
     {
       "Position": {
-        "x": -0.09894514,
-        "y": 0.20931612,
-        "z": 0.5458503
+        "x": 0.7471769,
+        "y": 0.209305868,
+        "z": 0.5732313
       },
       "Rotation": {
-        "x": -1.90485636e-8,
-        "y": 0.0002595472,
-        "z": 180
+        "x": -1.73753012e-8,
+        "y": 359.987366,
+        "z": -3.00711349e-8
       }
     },
     {
       "Position": {
-        "x": 0.660692155,
-        "y": 0.209359124,
-        "z": 0.550708234
+        "x": 0.277715951,
+        "y": 0.209305838,
+        "z": 0.5599681
       },
       "Rotation": {
-        "x": 7.728764e-9,
-        "y": 0.0002732076,
-        "z": 180
+        "x": 7.11022949e-7,
+        "y": -0.00133871706,
+        "z": -0.000001036755
       }
     },
     {
       "Position": {
-        "x": -0.7024495,
-        "y": 0.20930396,
-        "z": -0.00134493678
+        "x": -0.1903904,
+        "y": 0.209305808,
+        "z": 0.560403168
       },
       "Rotation": {
-        "x": 8.569377e-9,
-        "y": 0.000273207581,
-        "z": 180
+        "x": -1.248795e-8,
+        "y": 0.000505434,
+        "z": 1.91456078e-8
+      }
+    },
+    {
+      "Position": {
+        "x": -0.726618767,
+        "y": 0.2093058,
+        "z": 0.0321534164
+      },
+      "Rotation": {
+        "x": 2.67468825e-10,
+        "y": 0.000505434,
+        "z": -2.53530974e-8
       }
     }
   ],
   "States": {
-    "2": {
-      "GUID": "bb8f6e",
+    "1": {
+      "GUID": "c994e2",
       "Name": "CardCustom",
       "Transform": {
-        "posX": 15,
+        "posX": 1.47792889e-12,
         "posY": 0.9736048,
-        "posZ": -12.5,
-        "rotX": -1.96914289e-8,
-        "rotY": 180,
-        "rotZ": -8.750555e-8,
+        "posZ": 12.5,
+        "rotX": 5.27772457e-8,
+        "rotY": 3.93196829e-11,
+        "rotZ": 1.43961181e-8,
         "scaleX": 1.6499995,
         "scaleY": 1,
         "scaleZ": 1.6499995
       },
-      "Nickname": "playerBoard3",
+      "Nickname": "playerBoard2",
       "Description": "",
       "GMNotes": "",
       "AltLookAngle": {
@@ -135,69 +147,57 @@
       "GridProjection": false,
       "HideWhenFaceDown": true,
       "Hands": true,
-      "CardID": 700,
+      "CardID": 200,
       "SidewaysCard": false,
       "CustomDeck": {
-        "7": {
-          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
-          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13354533997953513322/4A2895AD43D1C8D673C61C33571934A40558D654/",
+        "2": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9317936043399539493/54C4CB7F62DAED68D4142EDABC09D8360905A78C/",
           "NumWidth": 1,
           "NumHeight": 1,
           "BackIsHidden": true,
           "UniqueBack": false,
-          "Type": 0
+          "Type": 1
         }
       },
-      "LuaScript": "require(\"lib.playerBoard3\")",
+      "LuaScript": "require(\"lib.playerBoard2\")",
       "LuaScriptState": "",
       "XmlUI": "",
       "AttachedSnapPoints": [
         {
           "Position": {
-            "x": 0.7471769,
-            "y": 0.209305868,
-            "z": 0.5732313
+            "x": -0.09894514,
+            "y": 0.20931612,
+            "z": 0.5458503
           },
           "Rotation": {
-            "x": -1.73753012e-8,
-            "y": 359.987366,
-            "z": -3.00711349e-8
+            "x": -1.90485636e-8,
+            "y": 0.0002595472,
+            "z": 180
           }
         },
         {
           "Position": {
-            "x": 0.277715951,
-            "y": 0.209305838,
-            "z": 0.5599681
+            "x": 0.660692155,
+            "y": 0.209359124,
+            "z": 0.550708234
           },
           "Rotation": {
-            "x": 7.11022949e-7,
-            "y": -0.00133871706,
-            "z": -0.000001036755
+            "x": 7.728764e-9,
+            "y": 0.0002732076,
+            "z": 180
           }
         },
         {
           "Position": {
-            "x": -0.1903904,
-            "y": 0.209305808,
-            "z": 0.560403168
+            "x": -0.7024495,
+            "y": 0.20930396,
+            "z": -0.00134493678
           },
           "Rotation": {
-            "x": -1.248795e-8,
-            "y": 0.000505434,
-            "z": 1.91456078e-8
-          }
-        },
-        {
-          "Position": {
-            "x": -0.726618767,
-            "y": 0.2093058,
-            "z": 0.0321534164
-          },
-          "Rotation": {
-            "x": 2.67468825e-10,
-            "y": 0.000505434,
-            "z": -2.53530974e-8
+            "x": 8.569377e-9,
+            "y": 0.000273207581,
+            "z": 180
           }
         }
       ]

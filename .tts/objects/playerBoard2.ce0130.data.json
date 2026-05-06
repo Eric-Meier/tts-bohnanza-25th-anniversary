@@ -1,9 +1,9 @@
 {
-  "GUID": "fecb97",
+  "GUID": "ce0130",
   "Name": "CardCustom",
   "Transform": {
-    "posX": 15,
-    "posY": 0.9736048,
+    "posX": 0,
+    "posY": 0.973603964,
     "posZ": -12.5,
     "rotX": -1.96914289e-8,
     "rotY": 180,
@@ -95,11 +95,11 @@
   ],
   "States": {
     "2": {
-      "GUID": "bb8f6e",
+      "GUID": "19f968",
       "Name": "CardCustom",
       "Transform": {
-        "posX": 15,
-        "posY": 0.9736048,
+        "posX": 0,
+        "posY": 0.973603964,
         "posZ": -12.5,
         "rotX": -1.96914289e-8,
         "rotY": 180,

@@ -1,3 +1,50 @@
+-- Bundled by luabundle {"version":"1.7.0"}
+local __bundle_require, __bundle_loaded, __bundle_register, __bundle_modules = (function(superRequire)
+	local loadingPlaceholder = {[{}] = true}
+
+	local register
+	local modules = {}
+
+	local require
+	local loaded = {}
+
+	register = function(name, body)
+		if not modules[name] then
+			modules[name] = body
+		end
+	end
+
+	require = function(name)
+		local loadedModule = loaded[name]
+
+		if loadedModule then
+			if loadedModule == loadingPlaceholder then
+				return nil
+			end
+		else
+			if not modules[name] then
+				if not superRequire then
+					local identifier = type(name) == 'string' and '\"' .. name .. '\"' or tostring(name)
+					error('Tried to require ' .. identifier .. ', but no such module has been registered')
+				else
+					return superRequire(name)
+				end
+			end
+
+			loaded[name] = loadingPlaceholder
+			loadedModule = modules[name](require, loaded, register, modules)
+			loaded[name] = loadedModule
+		end
+
+		return loadedModule
+	end
+
+	return require, loaded, register, modules
+end)(nil)
+__bundle_register("__root", function(require, _LOADED, __bundle_register, __bundle_modules)
+require("lib.playerBoard2")
+end)
+__bundle_register("lib.playerBoard2", function(require, _LOADED, __bundle_register, __bundle_modules)
 local discardPosition = {-5,0,0}
 local discardDropPosition = {discardPosition[1],discardPosition[2]+3,discardPosition[3]}
 
@@ -6,7 +53,7 @@ function onLoad()
     self.createButton({
         click_function = "Harvest2",
         function_owner = self,
-        position       = {-0.28, 0.2, -2},
+        position       = {0.1, 0.2, -2},
         width          = 80,
         height         = 300,
         tooltip        = "Harvest",
@@ -15,16 +62,7 @@ function onLoad()
     self.createButton({
         click_function = "Harvest1",
         function_owner = self,
-        position       = {-0.75, 0.2, -2},
-        width          = 80,
-        height         = 300,
-        tooltip        = "Harvest",
-        color          = {0.83, 0.13, 0.17}
-    })
-    self.createButton({
-        click_function = "Harvest3",
-        function_owner = self,
-        position       = {0.18, 0.2, -2},
+        position       = {-0.68, 0.2, -2},
         width          = 80,
         height         = 300,
         tooltip        = "Harvest",
@@ -33,15 +71,11 @@ function onLoad()
 end
 
 function Harvest1()
-    harvest(1)
-end
-
-function Harvest2()
     harvest(2)
 end
 
-function Harvest3()
-    harvest(3)
+function Harvest2()
+    harvest(1)
 end
 
 function getFieldDeck(position)
@@ -61,8 +95,7 @@ function getFieldDeck(position)
             fieldDeck = obj.hit_object
             beanName = fieldDeck.getObjects()[1].name
             beanCount = fieldDeck.getQuantity()
-        end
-        if obj.hit_object.tag == 'Card' then
+        elseif obj.hit_object.tag == 'Card' then
             if obj.hit_object.getName() ~= 'playerBoard2' and obj.hit_object.getName() ~= 'playerBoard3' then
                 fieldDeck = obj.hit_object
                 beanName = fieldDeck.getName()
@@ -79,6 +112,7 @@ function harvest(fieldIndex)
     local beanName
     local beanCount
     fieldDeck, beanName, beanCount = getFieldDeck(fieldPosition)
+
     if beanName == 'garden' and beanCount >= 3 then
         broadcastToAll('Uwe is pleased')
         self.setCustomObject({
@@ -93,7 +127,7 @@ function harvest(fieldIndex)
         })
     end
     local coins = 0
-    local coinPosition = self.positionToWorld(self.getSnapPoints()[4].position)
+    local coinPosition = self.positionToWorld(self.getSnapPoints()[3].position)
     local coinDropPosition = {coinPosition[1],coinPosition[2]+2,coinPosition[3]}
     local discard = Global.call('getDiscard')
     local value
@@ -110,7 +144,7 @@ function harvest(fieldIndex)
     local coffeeValue = {{4,1},{7,2},{10,3},{12,4}}
     local cocoaValue = {{2,1},{3,3},{4,4}}
     local fieldValue = {{2,'field'},{3,3}}
-
+  
     if beanName == 'garden' then
         value = gardenValue
     elseif beanName == 'blue' then
@@ -135,17 +169,40 @@ function harvest(fieldIndex)
         value = cocoaValue
     elseif beanName == 'field' then
         value = fieldValue
+    elseif beanName == nil then
+        value = {{0,0}}
     end
+
     for _, doodoo in ipairs(value) do
-        if beanCount >= doodoo[1] then
+        if beanCount == nil then
+        elseif beanCount >= doodoo[1] then
             coins = doodoo[2]
         end
     end
+
     if coins == 'field' then
-        self.setState(2)
         coins = 0
+        local fieldIndexOther
+        if fieldIndex == 2 then
+            fieldIndexOther = 1
+        elseif fieldIndex == 1 then
+            fieldIndexOther = 2
+        end
+        local fieldPositionOther = self.positionToWorld(self.getSnapPoints()[fieldIndexOther].position)
+        local fieldDeckOther,_,_ = getFieldDeck(fieldPositionOther)
+        local pb3 = self.setState(2)
+        if fieldDeckOther then
+            Wait.time(function() 
+                local pb3FieldPosition = pb3.positionToWorld(pb3.getSnapPoints()[1].position)
+                local fieldDeckOtherDropPosition = {pb3FieldPosition[1], pb3FieldPosition[2]+1, pb3FieldPosition[3]}
+                fieldDeckOther.setPositionSmooth(fieldDeckOtherDropPosition,false) 
+            end, 1)
+        end
     end
-    if fieldDeck.tag == 'Deck' then
+    
+    if fieldDeck == nil then
+        broadcastToAll("Y\'ain\'t got no beans!")
+    elseif fieldDeck.tag == 'Deck' then
         for i, card in ipairs(fieldDeck.getObjects()) do
             if i <= coins then
                 if i < beanCount then
@@ -171,6 +228,8 @@ function harvest(fieldIndex)
             discard.putObject(fieldDeck)
         else
             fieldDeck.setPositionSmooth(discardDropPosition,false)
-        end   
+        end
     end
 end
+end)
+return __bundle_require("__root")
