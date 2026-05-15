@@ -1,5 +1,6 @@
 local numPlayers = #getSeatedPlayers()
 local gameOver = false
+local firstClick = true
 
 function onLoad()
     -- Create button on the object this script is attached to
@@ -40,5 +41,18 @@ function dealOneToAll(_, color, _)
     else
         deck.deal(1)
     end
-    Turns.endTurn()
+    local nextUp
+    local turnOrder = {"Pink","Purple","Red","Orange","Yellow","Green","Blue"}
+    for i, turner in ipairs(turnOrder) do
+        if color == "Blue" then
+            nextUp = turnOrder[1]
+        elseif color == turner then
+            nextUp = turnOrder[i+1]
+        end
+    end
+    Turns.turn_color = nextUp
+    if firstClick then
+        firstClick = false
+        Turns.enable = true
+    end
 end
