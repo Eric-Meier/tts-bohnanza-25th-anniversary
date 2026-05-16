@@ -180,6 +180,8 @@ function harvest(fieldIndex)
         end
     end
 
+    local pbOrient = math.floor(self.getRotation().y)
+    
     if coins == 'field' then
         coins = 0
         local fieldIndexOther
@@ -199,7 +201,7 @@ function harvest(fieldIndex)
             end, 1)
         end
     end
-    
+
     if fieldDeck == nil then
         broadcastToAll("Y\'ain\'t got no beans!")
     elseif fieldDeck.tag == 'Deck' then
@@ -208,17 +210,31 @@ function harvest(fieldIndex)
                 if i < beanCount then
                     local poopoo = fieldDeck.takeObject()
                     poopoo.setPositionSmooth(coinDropPosition,false)
-                    poopoo.setRotation({-180,0,0})
+                    if pbOrient == 180 then
+                        poopoo.setRotation({180,0,0})
+                    elseif pbOrient == 0 then
+                        poopoo.setRotation({180,180,0})
+                    elseif pbOrient == 270 then
+                        poopoo.setRotation({180,90,0})
+                    end
                 elseif i == beanCount then
                     fieldDeck.remainder.setPositionSmooth(coinDropPosition,false)
-                    fieldDeck.remainder.setRotation({-180,0,0})
+                    if pbOrient == 180 then
+                        fieldDeck.remainder.setRotation({180,0,0})
+                    elseif pbOrient == 0 then
+                        fieldDeck.remainder.setRotation({180,180,0})
+                    elseif pbOrient == 270 then
+                        fieldDeck.remainder.setRotation({180,90,0})
+                    end
                 end
             elseif i > coins then
                 if i < beanCount then
                     local poopoo = fieldDeck.takeObject()
                     poopoo.setPositionSmooth(discardDropPosition,false)
+                    poopoo.setRotation({0,180,0})
                 elseif i == beanCount then
                     fieldDeck.remainder.setPositionSmooth(discardDropPosition,false)
+                    fieldDeck.remainder.setRotation({0,180,0})
                 end
             end
         end
@@ -228,6 +244,7 @@ function harvest(fieldIndex)
             discard.putObject(fieldDeck)
         else
             fieldDeck.setPositionSmooth(discardDropPosition,false)
+            fieldDeck.setRotation({0,180,0})
         end
     end
 end
