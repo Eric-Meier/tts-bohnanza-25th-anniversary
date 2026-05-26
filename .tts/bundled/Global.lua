@@ -43,7 +43,6 @@ function shuffleInDiscard()
     local discardPosition = {-5,0,0}
     local deckPosition = {3.75,1,3.75}
     local numPlayers = #getSeatedPlayers()
-    local numPlayers = 3
     local discard = getDiscard()
     local deck = getDeck()
     if numPlayers == 3 and shuffleCount >= 1 then

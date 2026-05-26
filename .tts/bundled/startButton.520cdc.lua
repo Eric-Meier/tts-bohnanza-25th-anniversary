@@ -48,19 +48,19 @@ function startGame()
         end
     end
     
-    local coffeeDeck = getObjectFromGUID("bda77b")
+    local coffeeDeck = getObjectFromGUID("26bdec")
     if coffeeDeck then
         coffeeDeck.destruct()
     end
-    local fieldBeanDeck = getObjectFromGUID("4ba827")
+    local fieldBeanDeck = getObjectFromGUID("b09131")
     if fieldBeanDeck then
         fieldBeanDeck.destruct()
     end
-    local magpieDeck = getObjectFromGUID("ecade6")
+    local magpieDeck = getObjectFromGUID("eb172d")
     if magpieDeck then
         magpieDeck.destruct()
     end
-    local cocoaDeck = getObjectFromGUID("067287")
+    local cocoaDeck = getObjectFromGUID("11d7d2")
     if cocoaDeck then
         cocoaDeck.destruct()
     end 

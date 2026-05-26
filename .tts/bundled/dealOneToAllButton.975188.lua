@@ -1,4 +1,3 @@
-local numPlayers = #getSeatedPlayers()
 local gameOver = false
 local firstClick = true
 
@@ -16,6 +15,7 @@ function onLoad()
 end
 
 function dealOneToAll(_, color, _)
+    local numPlayers = #getSeatedPlayers()
     local deal3Button = getObjectFromGUID('028004')
     if deal3Button then
         deal3Button.destruct()
