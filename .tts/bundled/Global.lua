@@ -232,22 +232,10 @@ function harvest(params)
                     if i < beanCount then
                         local poopoo = fieldDeck.takeObject()
                         poopoo.setPositionSmooth(coinDropPosition,false)
-                        if pbOrient == 180 then
-                            poopoo.setRotation({180,0,0})
-                        elseif pbOrient == 0 then
-                            poopoo.setRotation({180,180,0})
-                        elseif pbOrient == 270 then
-                            poopoo.setRotation({180,90,0})
-                        end
+                        poopoo.setRotation({180,pbOrient-180,0})
                     elseif i == beanCount then
                         fieldDeck.remainder.setPositionSmooth(coinDropPosition,false)
-                        if pbOrient == 180 then
-                            fieldDeck.remainder.setRotation({180,0,0})
-                        elseif pbOrient == 0 then
-                            fieldDeck.remainder.setRotation({180,180,0})
-                        elseif pbOrient == 270 then
-                            fieldDeck.remainder.setRotation({180,90,0})
-                        end
+                        fieldDeck.remainder.setRotation({180,pbOrient-180,0})
                     end
                 elseif i > coins then
                     if i < beanCount then

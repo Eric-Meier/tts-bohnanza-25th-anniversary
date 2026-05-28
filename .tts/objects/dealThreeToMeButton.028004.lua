@@ -14,7 +14,6 @@ function onLoad()
 end
 
 function deal3ToMe(_,color,_)
-    local numPlayers = #getSeatedPlayers()
     local deal1Button = getObjectFromGUID('975188')
     if deal1Button then
         deal1Button.destruct()
