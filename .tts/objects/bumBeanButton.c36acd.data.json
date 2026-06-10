@@ -1,0 +1,57 @@
+{
+  "GUID": "c36acd",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 23.5465221,
+    "posY": 1.03124928,
+    "posZ": -0.8034401,
+    "rotX": 9.86821647e-8,
+    "rotY": 180,
+    "rotZ": 8.147906e-7,
+    "scaleX": 0.5000005,
+    "scaleY": 1,
+    "scaleZ": 0.5000005
+  },
+  "Nickname": "bumBeanButton",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/1756937567112412525/E0719A27A065529DFFE504B8654FFE66B4FDACBE/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "function onLoad()\r\n    self.createButton({\r\n        click_function = \"bumBean\",\r\n        function_owner = self,\r\n        label          = \"Bum\\nBean!\",\r\n        position       = {0, 0.1, 0},\r\n        width          = 2000,\r\n        height         = 2000,\r\n        font_size      = 600,\r\n        color          = {0.988,0,0}\r\n    })\r\nend\r\n\r\nfunction bumBean()\r\n    broadcastToAll(\"Bum Bean!\", {0.988,0,0})\r\nend\r\n",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}
