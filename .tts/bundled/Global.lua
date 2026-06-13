@@ -106,6 +106,9 @@ local function getFieldDeck(position)
             end
         end
     end
+    if beanCount == nil then
+        beanCount = 0
+    end
     return fieldDeck, beanName, beanCount
 end
 
@@ -186,8 +189,7 @@ function harvest(params)
     end
 
     for _, doodoo in ipairs(value) do
-        if beanCount == nil then
-        elseif beanCount >= doodoo[1] then
+        if beanCount >= doodoo[1] then
             coins = doodoo[2]
         end
     end
@@ -252,10 +254,52 @@ function harvest(params)
              broadcastToAll("You can\'t harvest a field with different kinds of beans in it!")
         end
     elseif fieldDeck.tag == 'Card' then
-        if discard then
+        local allowDiscard
+        if selfObj.getName() == "playerBoard2" then
+            local fieldIndexOther
+            if fieldIndex == 1 then
+                fieldIndexOther = 2
+            elseif fieldIndex == 2 then
+                fieldIndexOther = 1
+            end
+            local fieldPositionOther = selfObj.positionToWorld(selfObj.getSnapPoints()[fieldIndexOther].position)
+            local _,_,beanCountOther = getFieldDeck(fieldPositionOther)
+            if beanCountOther > 1 then
+                broadcastToAll("Thou Shalt Not Violate the Bean Protection Rule!")
+                allowDiscard = false
+            elseif beanCountOther <= 1 then
+                allowDiscard = true
+            end
+        elseif selfObj.getName() == "playerBoard3" then
+            local fieldIndicesOther
+            if fieldIndex == 1 then
+                fieldIndicesOther = {2,3}
+            elseif fieldIndex == 2 then
+                fieldIndicesOther = {1,3}
+            elseif fieldIndex == 3 then
+                fieldIndicesOther = {1,2}
+            end
+            local fieldPositionsOther = {}
+            for i, index in ipairs(fieldIndicesOther) do
+                table.insert(fieldPositionsOther, selfObj.positionToWorld(selfObj.getSnapPoints()[index].position))
+            end
+            local beanCountsOther = {}
+            for i, pos in ipairs(fieldPositionsOther) do
+                local _,_,beanCountOther = getFieldDeck(pos)
+                table.insert(beanCountsOther,beanCountOther)
+            end
+            local maxBeanCountOther = math.max(table.unpack(beanCountsOther))
+            if maxBeanCountOther > 1 then
+                broadcastToAll("Thou Shalt Not Violate the Bean Protection Rule!")
+                allowDiscard = false
+            elseif maxBeanCountOther <= 1 then
+                allowDiscard = true
+            end
+        end
+        if discard and allowDiscard then
             fieldDeck.setPosition({fieldPosition[1],fieldPosition[2]+3, fieldPosition[3]})
             discard.putObject(fieldDeck)
-        else
+        elseif allowDiscard then
             fieldDeck.setPositionSmooth(discardDropPosition,false)
             fieldDeck.setRotation({0,180,0})
         end
