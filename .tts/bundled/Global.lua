@@ -218,6 +218,10 @@ function harvest(params)
         broadcastToAll("You already have three fields!")
     end
 
+    if beanCount > 0 and coins == 0 then
+        flushSound()
+    end
+
     if fieldDeck == nil then
         broadcastToAll("Y\'ain\'t got no beans!")
     elseif fieldDeck.tag == 'Deck' then
@@ -304,4 +308,17 @@ function harvest(params)
             fieldDeck.setRotation({0,180,0})
         end
     end
+end
+
+function flushSound()
+    MusicPlayer.setCurrentAudioclip({
+        url = "https://steamusercontent-a.akamaihd.net/ugc/13993474696126845299/31E854DCF6CE7802DCFA77CB516828A37458F746/",
+        title = "Flush"
+    })
+    
+    Wait.condition(
+        function() MusicPlayer.play() end,
+        function() return MusicPlayer.loaded end,
+        10
+    )
 end
