@@ -218,10 +218,6 @@ function harvest(params)
         broadcastToAll("You already have three fields!")
     end
 
-    if beanCount > 0 and coins == 0 then
-        flushSound()
-    end
-
     if fieldDeck == nil then
         broadcastToAll("Y\'ain\'t got no beans!")
     elseif fieldDeck.tag == 'Deck' then
@@ -253,6 +249,9 @@ function harvest(params)
                         fieldDeck.remainder.setRotation({0,180,0})
                     end
                 end
+            end
+            if beanCount > 0 and coins == 0 and beanName ~= "field" then
+                flushSound()
             end
         elseif beansSame == false then
              broadcastToAll("You can\'t harvest a field with different kinds of beans in it!")
@@ -306,6 +305,9 @@ function harvest(params)
         elseif allowDiscard then
             fieldDeck.setPositionSmooth(discardDropPosition,false)
             fieldDeck.setRotation({0,180,0})
+        end
+        if beanCount > 0 and coins == 0 and beanName ~= "field" and allowDiscard then
+            flushSound()
         end
     end
 end
